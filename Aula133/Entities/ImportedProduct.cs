@@ -25,8 +25,8 @@ namespace Aula133.Entities
         public sealed override string PriceTag()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(base.PriceTag());
-            sb.Append(" Customs fee: $ " + CustomsFee.ToString("F2", CultureInfo.InvariantCulture) + ")");
+            sb.Append(Name + " $ " + TotalPrice().ToString("F2", CultureInfo.InvariantCulture));
+            sb.Append(" (Customs fee: $ " + CustomsFee.ToString("F2", CultureInfo.InvariantCulture) + ")");
             return sb.ToString();
         }
 

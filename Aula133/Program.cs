@@ -15,18 +15,29 @@ for (int i = 1; i <= n; i++)
     Console.Write("Price: ");
     double price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-    if (type == 'c')
+    if (type == 'u')
     {
-        Console.Write("Common, used or imported (c/u/i) ? ");
+        Console.Write("Manufacture date (DD/MM/YYYY): ");
+        DateTime mDate = DateTime.Parse(Console.ReadLine());
+        Product product = new UsedProduct(name, price, mDate);
+        products.Add(product);
     }
     else if (type == 'i')
     {
-
+        Console.Write("Customs fee: ");
+        double cfee = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        Product product = new ImportedProduct(name, price, cfee);
+        products.Add(product);
     }
     else
     {
-
+        Product product = new Product(name, price);
+        products.Add(product);
     }
+}
 
-
+Console.WriteLine();
+foreach (Product product in products)
+{
+    Console.WriteLine(product.PriceTag());
 }
